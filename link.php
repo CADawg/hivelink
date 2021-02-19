@@ -3,6 +3,10 @@
 <head>
     <title>HiveLink</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" integrity="sha256-O8SsQwDg1R10WnKJNyYgd9J3rlom+YSVcGbEF5RmfFk=" crossorigin="anonymous">
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -17,8 +21,15 @@
                 <li>or https://hivel.ink/topic/@author/permalink</li>
                 <li>or for a user https://hivel.ink/@user</li>
             </ul>
+            <button class="button is-dark mt-3" style="width: 100%;">Clear Favourite Frontend</button>
         </div>
     </div>
+    <script>
+        $("button").on("click", function(event) {
+            event.preventDefault();
+            $.get("/frontend_delete.php");
+        })
+    </script>
 </section>
 </body>
 </html>
