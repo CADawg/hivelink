@@ -98,7 +98,7 @@ if (isset($_SESSION["frontend"]) and !isset($_GET["force_select"])) {
                     </label>
                     <p class="has-text-danger has-text-weight-bold is-size-7"><?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "Why am I being asked to select even though I have a saved choice?" : ""?></p>
                     <p class="has-text-danger is-size-7"><?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "The links creator has asked us to show you this screen" : ""?></p>
-                    <p>Tool by <a href="https://hivel.ink/@cadawg">CADawg</a>, <a href="https://vote.hive.uno/@cadawg">vote me for witness</a>!</p>
+                    <p>Tool by <a href="https://hivel.ink/@cadawg" class="has-text-info">CADawg</a>, <a class="has-text-info" href="https://vote.hive.uno/@cadawg">vote me for witness</a>!</p>
                 </div>
             </div>
         </section>
