@@ -2,7 +2,9 @@
 session_set_cookie_params(60 * 60 * 24 * 365 * 20);
 session_start();
 
-$parts = explode("/", $_SERVER['REQUEST_URI']);
+$req_uri = strtok($_SERVER["REQUEST_URI"], "?");
+
+$parts = explode("/", $req_uri);
 $parts = array_reverse($parts);
 
 function hsc($text) {
@@ -26,7 +28,7 @@ if (empty($username)) {
     die();
 }
 
-if (isset($_SESSION["frontend"])) {
+if (isset($_SESSION["frontend"]) and !isset($_GET["force_select"])) {
     if (!empty($post)) {
         switch ($_SESSION["frontend"]) {
             case "hive-blog":
@@ -91,9 +93,11 @@ if (isset($_SESSION["frontend"])) {
                         <a data-frontend="personal-community" href="<?="https://personal.community/?hive=" . hsc(substr($username,1))?>" class="button is-primary mt-3" style="width: 100%;">Personal.Community</a>
                     <?php } ?>
                     <label class="checkbox">
-                        <input type="checkbox" id="always-frontend">
+                        <input type="checkbox" <?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "disabled='disabled'" : "" ?> id="always-frontend">
                         Always use this frontend
                     </label>
+                    <p class="has-text-danger has-text-weight-bold is-size-7"><?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "Why am I being asked to select even though I have a saved choice?" : ""?></p>
+                    <p class="has-text-danger is-size-7"><?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "The links creator has asked us to show you this screen" : ""?></p>
                 </div>
             </div>
         </section>

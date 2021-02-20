@@ -20,6 +20,7 @@
                 <li>https://hivel.ink/@author/permalink</li>
                 <li>or https://hivel.ink/topic/@author/permalink</li>
                 <li>or for a user https://hivel.ink/@user</li>
+                <li>you can also add ?force_select to the end, if you want us to not used their saved choice</li>
             </ul>
             <button class="button is-dark mt-3" style="width: 100%;">Clear Favourite Frontend</button>
         </div>
