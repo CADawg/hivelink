@@ -107,9 +107,11 @@ if (isset($_SESSION["frontend"]) and !isset($_GET["force_select"])) {
     <script>
             $("a").on("click", function(event) {
                 event.preventDefault();
-                $.get("/frontend_remember.php", "frontend=" + $(event.target).data("frontend"), function () {
-                    window.location.href = $(event.target).attr("href");
-                });
+                if (document.getElementById("always-frontend").checked) {
+                    $.get("/frontend_remember.php", "frontend=" + $(event.target).data("frontend"), function () {
+                        window.location.href = $(event.target).attr("href");
+                    });
+                }
             })
     </script>
     </body>
