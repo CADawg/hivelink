@@ -106,8 +106,8 @@ if (isset($_SESSION["frontend"]) and !isset($_GET["force_select"])) {
 
     <script>
             $("a").on("click", function(event) {
-                event.preventDefault();
                 if (document.getElementById("always-frontend").checked) {
+                    event.preventDefault();
                     $.get("/frontend_remember.php", "frontend=" + $(event.target).data("frontend"), function () {
                         window.location.href = $(event.target).attr("href");
                     });
