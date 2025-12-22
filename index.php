@@ -41,7 +41,7 @@ if (isset($_SESSION["frontend"]) and !isset($_GET["force_select"])) {
                 header("Location: https://ecency.com/" . hsc($username) . "/" . hsc($post));
                 break;
             case "personal-community":
-                header("Location: https://personal.community/?post=" . hsc(substr($username, 1)) . "/" . hsc($post));
+                header("Location: https://personal.community/@" . hsc(substr($username, 1)) . "/" . hsc($post));
                 break;
         }
     } else {
@@ -85,7 +85,7 @@ if (isset($_SESSION["frontend"]) and !isset($_GET["force_select"])) {
                     <a data-frontend="hive-blog" href="https://hive.blog/<?=hsc($username) . "/" . hsc($post)?>" class="button is-danger mt-3" style="width: 100%;">Hive.Blog</a>
                     <a data-frontend="peakd" href="https://peakd.com/<?=hsc($username) . "/" . hsc($post)?>" class="button is-dark mt-3" style="width: 100%;">PeakD</a>
                     <a data-frontend="ecency" href="https://ecency.com/<?=hsc($username) . "/" . hsc($post)?>" class="button is-info mt-3" style="width: 100%;">Ecency</a>
-                    <a data-frontend="personal-community" href="https://personal.community/?post=<?=hsc(substr($username, 1)) . "/" . hsc($post) ?>" class="button is-primary mt-3" style="width: 100%;">Personal.Community</a>
+                    <a data-frontend="personal-community" href="https://personal.community/@<?=hsc(substr($username, 1)) . "/" . hsc($post) ?>" class="button is-primary mt-3" style="width: 100%;">Personal.Community</a>
                     <?php } else { ?>
                         <?="<p>" . hsc($username) ."'s Profile</p>"?>
                         <a data-frontend="hive-blog" href="https://hive.blog/<?=hsc($username)?>" class="button is-danger mt-3" style="width: 100%;">Hive.Blog</a>
