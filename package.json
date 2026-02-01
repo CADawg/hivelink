@@ -1,0 +1,27 @@
+{
+  "name": "hivelink",
+  "version": "1.0.0",
+  "description": "Hive Links which let you pick your preferred Frontend",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CADawg/hivelink.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CADawg/hivelink/issues"
+  },
+  "homepage": "https://github.com/CADawg/hivelink#readme",
+  "devDependencies": {
+    "tailwindcss": "^4.1.18"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18"
+  }
+}

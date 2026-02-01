@@ -63,49 +63,92 @@ if (isset($_SESSION["frontend"]) and !isset($_GET["force_select"])) {
 }
 ?>
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
     <head>
-        <title>HiveLink</title>
+        <title>HiveLink - Choose Your Hive Frontend</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" integrity="sha256-O8SsQwDg1R10WnKJNyYgd9J3rlom+YSVcGbEF5RmfFk=" crossorigin="anonymous">
+        <meta name="description" content="Universal link service for Hive blockchain - choose your preferred frontend">
+        <link rel="stylesheet" href="/dist/output.css">
         <script
                 src="https://code.jquery.com/jquery-3.5.1.min.js"
                 integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
                 crossorigin="anonymous"></script>
     </head>
 
-    <body>
-        <section class="hero is-dark is-fullheight">
-            <div class="modal is-active">
-                <div class="modal-background"></div>
-                <div class="modal-content has-background-light has-text-dark p-5" style="border-radius: 5px; max-width: 400px;">
-                    <h1 class="is-size-4">Hive Link</h1>
+    <body class="bg-slate-100 dark:bg-slate-900 min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg p-8">
+                <div class="text-center mb-6">
+                    <h1 class="text-3xl font-bold text-slate-800 dark:text-white mb-2">
+                        HiveLink
+                    </h1>
                     <?php if (!empty($post)) { ?>
-                    <p>Link to a post by <?=hsc($username)?></p>
-                    <a data-frontend="hive-blog" href="https://hive.blog/<?=hsc($username) . "/" . hsc($post)?>" class="button is-danger mt-3" style="width: 100%;">Hive.Blog</a>
-                    <a data-frontend="peakd" href="https://peakd.com/<?=hsc($username) . "/" . hsc($post)?>" class="button is-dark mt-3" style="width: 100%;">PeakD</a>
-                    <a data-frontend="ecency" href="https://ecency.com/<?=hsc($username) . "/" . hsc($post)?>" class="button is-info mt-3" style="width: 100%;">Ecency</a>
-                    <a data-frontend="personal-community" href="https://personal.community/@<?=hsc(substr($username, 1)) . "/" . hsc($post) ?>" class="button is-primary mt-3" style="width: 100%;">Personal.Community</a>
+                        <p class="text-gray-700 dark:text-gray-300">Link to a post by <span class="font-semibold text-purple-600 dark:text-purple-400"><?=hsc($username)?></span></p>
                     <?php } else { ?>
-                        <?="<p>" . hsc($username) ."'s Profile</p>"?>
-                        <a data-frontend="hive-blog" href="https://hive.blog/<?=hsc($username)?>" class="button is-danger mt-3" style="width: 100%;">Hive.Blog</a>
-                        <a data-frontend="peakd" href="https://peakd.com/<?=hsc($username)?>" class="button is-dark mt-3" style="width: 100%;">PeakD</a>
-                        <a data-frontend="ecency" href="https://ecency.com/<?=hsc($username)?>" class="button is-info mt-3" style="width: 100%;">Ecency</a>
-                        <a data-frontend="personal-community" href="<?="https://personal.community/?hive=" . hsc(substr($username,1))?>" class="button is-primary mt-3" style="width: 100%;">Personal.Community</a>
+                        <p class="text-gray-700 dark:text-gray-300"><span class="font-semibold text-purple-600 dark:text-purple-400"><?=hsc($username)?></span>'s Profile</p>
                     <?php } ?>
-                    <label class="checkbox">
-                        <input type="checkbox" <?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "disabled='disabled'" : "" ?> id="always-frontend">
-                        Always use this frontend
-                    </label>
-                    <p class="has-text-danger has-text-weight-bold is-size-7"><?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "Why am I being asked to select even though I have a saved choice?" : ""?></p>
-                    <p class="has-text-danger is-size-7"><?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "The links creator has asked us to show you this screen" : ""?></p>
-                    <p>Tool by <a href="https://hivel.ink/@cadawg" class="has-text-info">CADawg</a>, <a class="has-text-info" href="https://vote.hive.uno/@cadawg">vote me for witness</a>!</p>
+                </div>
+
+                <div class="space-y-3 mb-6">
+                    <?php if (!empty($post)) { ?>
+                        <a data-frontend="hive-blog" href="https://hive.blog/<?=hsc($username) . "/" . hsc($post)?>"
+                           class="frontend-link block w-full px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-all duration-200 text-center">
+                            Hive.Blog
+                        </a>
+                        <a data-frontend="peakd" href="https://peakd.com/<?=hsc($username) . "/" . hsc($post)?>"
+                           class="frontend-link block w-full px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white rounded-lg font-medium transition-all duration-200 text-center">
+                            PeakD
+                        </a>
+                        <a data-frontend="ecency" href="https://ecency.com/<?=hsc($username) . "/" . hsc($post)?>"
+                           class="frontend-link block w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-200 text-center">
+                            Ecency
+                        </a>
+                        <a data-frontend="personal-community" href="https://personal.community/@<?=hsc(substr($username, 1)) . "/" . hsc($post) ?>"
+                           class="frontend-link block w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all duration-200 text-center">
+                            Personal.Community
+                        </a>
+                    <?php } else { ?>
+                        <a data-frontend="hive-blog" href="https://hive.blog/<?=hsc($username)?>"
+                           class="frontend-link block w-full px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium transition-all duration-200 text-center">
+                            Hive.Blog
+                        </a>
+                        <a data-frontend="peakd" href="https://peakd.com/<?=hsc($username)?>"
+                           class="frontend-link block w-full px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white rounded-lg font-medium transition-all duration-200 text-center">
+                            PeakD
+                        </a>
+                        <a data-frontend="ecency" href="https://ecency.com/<?=hsc($username)?>"
+                           class="frontend-link block w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all duration-200 text-center">
+                            Ecency
+                        </a>
+                        <a data-frontend="personal-community" href="<?="https://personal.community/?hive=" . hsc(substr($username,1))?>"
+                           class="frontend-link block w-full px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium transition-all duration-200 text-center">
+                            Personal.Community
+                        </a>
+                    <?php } ?>
+                </div>
+
+                <label class="flex items-center gap-2 mb-4 cursor-pointer">
+                    <input type="checkbox" <?=(isset($_GET["force_select"]) and isset($_SESSION["frontend"])) ? "disabled='disabled'" : "" ?>
+                           id="always-frontend" class="w-4 h-4 text-purple-600 dark:text-purple-400 rounded focus:ring-purple-500 dark:focus:ring-purple-400">
+                    <span class="text-gray-700 dark:text-gray-300 text-sm">Always use this frontend</span>
+                </label>
+
+                <?php if (isset($_GET["force_select"]) and isset($_SESSION["frontend"])) { ?>
+                <div class="bg-red-50 dark:bg-red-900/30 border-l-4 border-red-500 dark:border-red-400 p-3 mb-4 rounded">
+                    <p class="text-red-800 dark:text-red-300 font-semibold text-sm">Why am I being asked to select?</p>
+                    <p class="text-red-700 dark:text-red-400 text-xs">The link creator has asked us to show you this screen</p>
+                </div>
+                <?php } ?>
+
+                <div class="text-center text-sm text-gray-600 dark:text-gray-400 pt-4 border-t border-gray-200 dark:border-gray-700">
+                    <p>Tool by <a href="https://hivel.ink/@cadawg" class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium">CADawg</a></p>
+                    <p class="mt-1"><a class="text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-medium" href="https://vote.hive.uno/@cadawg">Vote me for witness</a></p>
                 </div>
             </div>
-        </section>
+        </div>
 
     <script>
-            $("a").on("click", function(event) {
+            $(".frontend-link").on("click", function(event) {
                 if (document.getElementById("always-frontend").checked) {
                     event.preventDefault();
                     $.get("/frontend_remember.php", "frontend=" + $(event.target).data("frontend"), function () {
