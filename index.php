@@ -157,5 +157,11 @@ if (isset($_SESSION["frontend"]) and !isset($_GET["force_select"])) {
                 }
             })
     </script>
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src="https://a.dbuidl.com/js/pa-3r06ZeR9fWME4rmDQ4LmT.js"></script>
+    <script>
+        window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+        plausible.init()
+    </script>
     </body>
 </html>
